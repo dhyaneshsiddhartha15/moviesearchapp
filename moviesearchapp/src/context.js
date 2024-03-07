@@ -9,10 +9,10 @@ const AppProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [movie, setMovie] = useState([]);
     const [isError, setIsError] = useState({ show: false, msg: "" });
-    const [query, setQuery] = useState("titanic");
+    const [query, setQuery] = useState("avengers");
 
     const getMovies = async (url) => {
-      setIsLoading(true);
+      setIsLoading(false);
         try {
             const res = await fetch(url);
             const data = await res.json();
@@ -20,9 +20,15 @@ const AppProvider = ({ children }) => {
             if (data.Response === "True") {
                 setIsLoading(false);
                 setMovie(data.Search);
+                setIsError(
+                    {
+                        show:false,
+                        msg:null,
+                    }
+                )
             } else {
                 setIsError({
-                    show: true,
+                    show: false,
                     msg: data.Error,
                 });
             }

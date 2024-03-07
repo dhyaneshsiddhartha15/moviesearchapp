@@ -6,6 +6,7 @@ const Home = () => {
   
   return (
     <div>
+      <h1 contenteditable spellcheck="false">MOVIE SEARCH APP</h1>
       <Search/>
       <Movies/>
     </div>
